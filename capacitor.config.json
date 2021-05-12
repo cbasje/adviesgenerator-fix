@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "adviesgenerator-fix",
+  "appId": "in.benjami.adviesgenerator",
+  "appName": "Adviesgenerator",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist",

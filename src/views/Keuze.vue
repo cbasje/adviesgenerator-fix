@@ -4,7 +4,7 @@
 			<ion-title>{{ keuzeObject.title }}</ion-title>
 			<ion-buttons slot="end">
 				<ion-button @click="closeModal()">
-					<ion-icon slot="icon-only" :icon="closeCircle"></ion-icon>
+					<ion-icon slot="icon-only" :icon="closeCircleOutline"></ion-icon>
 				</ion-button>
 			</ion-buttons>
 		</ion-toolbar>
@@ -33,7 +33,7 @@ import {
 	modalController,
 	isPlatform,
 } from '@ionic/vue';
-import { closeCircle } from 'ionicons/icons';
+import { closeCircleOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 
 import { Clipboard } from '@capacitor/clipboard';
@@ -112,7 +112,7 @@ export default defineComponent({
 		const ios = isPlatform('ios');
 
 		return {
-			closeCircle,
+			closeCircleOutline,
 			ios,
 		};
 	},
