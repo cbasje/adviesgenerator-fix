@@ -1,0 +1,7 @@
+{
+  "name": "adviesgenerator-fix",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
