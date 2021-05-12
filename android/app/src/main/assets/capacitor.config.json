@@ -6,7 +6,17 @@
 	"webDir": "dist",
 	"plugins": {
 		"SplashScreen": {
-			"launchShowDuration": 0
+			"launchShowDuration": 3000,
+			"launchAutoHide": true,
+			"backgroundColor": "#008577",
+			"androidSplashResourceName": "splash",
+			"androidScaleType": "CENTER_CROP",
+			"androidSpinnerStyle": "large",
+			"iosSpinnerStyle": "small",
+			"spinnerColor": "#ffffff",
+			"showSpinner": true,
+			"splashFullScreen": true,
+			"splashImmersive": true
 		}
 	},
 	"cordova": {}
