@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.5640df94cfdf1b993737a7566bbdcc51.js"
+  "/precache-manifest.ad0e32a56249afa9f8d8b1b42060563f.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "adviesgenerator-fix"});
