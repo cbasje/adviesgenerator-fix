@@ -23,6 +23,10 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+/* Bootstrap CSS */
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
