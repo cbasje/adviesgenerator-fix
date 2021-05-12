@@ -3,6 +3,11 @@
 		<ion-header :translucent="true">
 			<ion-toolbar :color="!ios ? 'primary' : null">
 				<ion-title>Ruben's Adviesgever</ion-title>
+				<ion-buttons slot="end">
+					<ion-button @click="openKeuzeToevoegen">
+						<ion-icon slot="icon-only" :icon="add"></ion-icon>
+					</ion-button>
+				</ion-buttons>
 			</ion-toolbar>
 		</ion-header>
 
@@ -64,9 +69,12 @@ import {
 	modalController,
 	isPlatform,
 } from '@ionic/vue';
-import Keuze from './Keuze.vue';
+import { add } from 'ionicons/icons';
 import { defineComponent, ref } from 'vue';
 import { mapActions } from 'vuex';
+
+import Keuze from './Keuze.vue';
+import KeuzeToevoegen from './KeuzeToevoegen.vue';
 
 export default defineComponent({
 	name: 'Home',
@@ -82,7 +90,7 @@ export default defineComponent({
 		const page = ref();
 		const ios = isPlatform('ios');
 
-		return { page, ios };
+		return { page, ios, add };
 	},
 	mounted() {
 		this.loadExcuses();
@@ -97,6 +105,15 @@ export default defineComponent({
 				componentProps: {
 					keuze: keuze,
 				},
+			});
+			return modal.present();
+		},
+		async openKeuzeToevoegen() {
+			const modal = await modalController.create({
+				component: KeuzeToevoegen,
+				cssClass: 'keuze-toevoegen-class',
+				swipeToClose: true,
+				presentingElement: this.page.$el,
 			});
 			return modal.present();
 		},
