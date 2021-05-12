@@ -66,6 +66,7 @@ import {
 } from '@ionic/vue';
 import Keuze from './Keuze.vue';
 import { defineComponent, ref } from 'vue';
+import { mapActions } from 'vuex';
 
 export default defineComponent({
 	name: 'Home',
@@ -83,6 +84,9 @@ export default defineComponent({
 
 		return { page, ios };
 	},
+	mounted() {
+		this.loadExcuses();
+	},
 	methods: {
 		async openKeuze(keuze: string) {
 			const modal = await modalController.create({
@@ -96,6 +100,9 @@ export default defineComponent({
 			});
 			return modal.present();
 		},
+		...mapActions({
+			loadExcuses: 'loadExcuses',
+		}),
 	},
 });
 </script>
