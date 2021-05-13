@@ -13,7 +13,7 @@
 	<ion-content class="ion-padding">
         <form @submit.prevent="submit" method="post">
             <ion-item>
-                <ion-textarea placeholder="Voeg een nieuw excuus toe..."></ion-textarea>
+                <ion-textarea placeholder="Voeg een nieuw excuus toe..." v-model="newExcuus"></ion-textarea>
             </ion-item>
             <ion-button type="submit" expand="block">
                 Toevoegen
@@ -40,6 +40,7 @@ import { closeCircle } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 
 import { Toast } from '@capacitor/toast';
+import { mapActions } from 'vuex';
 
 export default defineComponent({
 	name: 'Keuze',
@@ -59,7 +60,8 @@ export default defineComponent({
 	},
 	data() {
 		return {
-			audio: new Audio()
+			audio: new Audio(),
+			newExcuus: ''
 		};
 	},
 	setup() {
@@ -84,8 +86,12 @@ export default defineComponent({
 			});
 		},
         submit() {
+			this.addExcuses(this.newExcuus);
             this.closeModal();
-        }
+        },
+		...mapActions({
+			addExcuses: 'addExcuses'
+		})
 	},
 });
 </script>

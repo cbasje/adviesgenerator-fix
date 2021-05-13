@@ -14,7 +14,7 @@
 		<ion-img :src="keuzeObject.image" />
 		<ion-label class="ion-padding">
 			<h2>Gebruik dit excuus:</h2>
-			<p>{{ this.randomExcuus }}</p>
+			<p>{{ this.randomExcuus.text }}</p>
 		</ion-label>
 	</ion-content>
 </template>
@@ -77,7 +77,7 @@ export default defineComponent({
 		}
 
 		this.showToast();
-		this.setClipboard(this.randomExcuus);
+		this.setClipboard(this.randomExcuus.text);
 
 		this.audio = new Audio(this.keuzeObject.sound);
 		this.audio.play();

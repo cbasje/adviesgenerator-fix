@@ -65,6 +65,8 @@ import {
 	IonPage,
 	IonTitle,
 	IonToolbar,
+	IonButtons,
+	IonIcon,
 	IonButton,
 	modalController,
 	isPlatform,
@@ -84,6 +86,8 @@ export default defineComponent({
 		IonPage,
 		IonTitle,
 		IonToolbar,
+		IonButtons,
+		IonIcon,
 		IonButton,
 	},
 	setup() {

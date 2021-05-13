@@ -18,27 +18,7 @@ const store = createStore({
 		keuzeObject: {
 			keuze: KeuzeOpties.GeenIdee,
 		},
-		excuses: [
-			// 'Nee!',
-			// 'Dan ben ik ziek, sorry',
-			// 'Dan ben in het Verre Oosten om specerijen te verzamelen, sorry',
-			// 'Ik zit dan in Egypte voor de CoBo van Toetanchamon',
-			// 'Volgende week? Ik dacht dat het over twee weken was, dus ik heb dan al iets gepland.',
-			// 'Ik heb best wel hoofdpijn dus ik reageer later wel',
-			// "Oh nee he, ik heb me verslapen, dus dat gaat 'm niet meer worden dan...",
-			// 'Ik stond op het punt ja te zeggen, maar toen kwam ik er achter dat mijn band lek was, dus ja...',
-			// 'Dan ben ik waarschijnlijk ongesteld en dat gaat niet goed samen...',
-			// 'Vorige week tijdens de k.f.t.-bestuursreis naar Jeruzalem op onze kamelen kwam ' +
-			// 	'ik dus een dromedaris tegen. Dat zijn natuurlijk geen goede vervoersmiddelen en ' +
-			// 	'daarom wilde ik dat beest gebruiken als een offermaal. Dit ging niet helemaal volgens ' +
-			// 	'plan en toen ik in het zand viel, verloor ik mijn telefoon. Tijdens het zoeken naar ' +
-			// 	'mijn telefoon brak ik ook nog eens mijn been en daarom kan ik dus dat niet, sorry...',
-			// 'Ik mail je er volgende week even over...',
-			// 'Ik heb dan waarschijnlijk vertraging door de verschrikkelijke NS',
-			// 'Mijn goudvis is net doodgegaan en dat hakt er wel echt in, dus ik denk dat ik de ' +
-			// 	'komende tijd even thuis blijf om dit te verwerken...',
-			// 'De Sebastiaansbrug staat open, dus ik kan er niet op tijd zijn denk ik...',
-		],
+		excuses: [],
 		keuzes: [
 			{
 				keuze: KeuzeOpties.Ja,
@@ -65,9 +45,18 @@ const store = createStore({
 	actions: {
 		async loadExcuses({ commit }) {
 			const request = await axios.get(
-				'https://adviesgenerator-api.glitch.me/excuses'
+				`${process.env.VUE_APP_SITE_URL}/excuses`
 			);
 			commit('saveExcuses', request.data);
+		},
+		async addExcuses({ commit, state }, payload: string) {
+			const request = await axios.post(
+				`${process.env.VUE_APP_SITE_URL}/excuses-new`,
+				{ excuus: payload }
+			);
+
+			request.data.excuus ??
+				commit('saveExcuses', [...state.excuses, request.data.excuus]);
 		},
 	},
 	mutations: {
